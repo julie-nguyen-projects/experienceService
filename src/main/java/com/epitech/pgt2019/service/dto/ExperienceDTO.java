@@ -3,6 +3,7 @@ import java.time.LocalDate;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
+import com.epitech.pgt2019.domain.enumeration.Type;
 
 /**
  * A DTO for the Experience entity.
@@ -18,6 +19,9 @@ public class ExperienceDTO implements Serializable {
     private LocalDate beginningDate;
 
     private LocalDate endingDate;
+
+    @NotNull
+    private Type type;
 
 
     private String userId;
@@ -60,6 +64,14 @@ public class ExperienceDTO implements Serializable {
 
     public void setEndingDate(LocalDate endingDate) {
         this.endingDate = endingDate;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public String getUserId() {
@@ -130,6 +142,7 @@ public class ExperienceDTO implements Serializable {
             ", title='" + getTitle() + "'" +
             ", beginningDate='" + getBeginningDate() + "'" +
             ", endingDate='" + getEndingDate() + "'" +
+            ", type='" + getType() + "'" +
             ", user=" + getUserId() +
             ", company=" + getCompanyId() +
             ", company='" + getCompanyName() + "'" +

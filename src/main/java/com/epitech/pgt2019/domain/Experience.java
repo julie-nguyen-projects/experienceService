@@ -12,6 +12,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.epitech.pgt2019.domain.enumeration.Type;
+
 /**
  * A Experience.
  */
@@ -33,6 +35,10 @@ public class Experience implements Serializable {
 
     @Field("ending_date")
     private LocalDate endingDate;
+
+    @NotNull
+    @Field("type")
+    private Type type;
 
     @DBRef
     @Field("user")
@@ -95,6 +101,19 @@ public class Experience implements Serializable {
 
     public void setEndingDate(LocalDate endingDate) {
         this.endingDate = endingDate;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public Experience type(Type type) {
+        this.type = type;
+        return this;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public ExpUser getUser() {
@@ -164,6 +183,7 @@ public class Experience implements Serializable {
             ", title='" + getTitle() + "'" +
             ", beginningDate='" + getBeginningDate() + "'" +
             ", endingDate='" + getEndingDate() + "'" +
+            ", type='" + getType() + "'" +
             "}";
     }
 }

@@ -35,6 +35,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.epitech.pgt2019.domain.enumeration.Type;
 /**
  * Test class for the ExperienceResource REST controller.
  *
@@ -52,6 +53,9 @@ public class ExperienceResourceIntTest {
 
     private static final LocalDate DEFAULT_ENDING_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_ENDING_DATE = LocalDate.now(ZoneId.systemDefault());
+
+    private static final Type DEFAULT_TYPE = Type.JOB;
+    private static final Type UPDATED_TYPE = Type.FORMATION;
 
     @Autowired
     private ExperienceRepository experienceRepository;
@@ -100,7 +104,8 @@ public class ExperienceResourceIntTest {
         Experience experience = new Experience()
             .title(DEFAULT_TITLE)
             .beginningDate(DEFAULT_BEGINNING_DATE)
-            .endingDate(DEFAULT_ENDING_DATE);
+            .endingDate(DEFAULT_ENDING_DATE)
+            .type(DEFAULT_TYPE);
         // Add required entity
         ExpUser expUser = ExpUserResourceIntTest.createEntity();
         expUser.setId("fixed-id-for-tests");
@@ -132,6 +137,7 @@ public class ExperienceResourceIntTest {
         assertThat(testExperience.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testExperience.getBeginningDate()).isEqualTo(DEFAULT_BEGINNING_DATE);
         assertThat(testExperience.getEndingDate()).isEqualTo(DEFAULT_ENDING_DATE);
+        assertThat(testExperience.getType()).isEqualTo(DEFAULT_TYPE);
     }
 
     @Test
@@ -190,6 +196,24 @@ public class ExperienceResourceIntTest {
     }
 
     @Test
+    public void checkTypeIsRequired() throws Exception {
+        int databaseSizeBeforeTest = experienceRepository.findAll().size();
+        // set the field null
+        experience.setType(null);
+
+        // Create the Experience, which fails.
+        ExperienceDTO experienceDTO = experienceMapper.toDto(experience);
+
+        restExperienceMockMvc.perform(post("/api/experiences")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(experienceDTO)))
+            .andExpect(status().isBadRequest());
+
+        List<Experience> experienceList = experienceRepository.findAll();
+        assertThat(experienceList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
     public void getAllExperiences() throws Exception {
         // Initialize the database
         experienceRepository.save(experience);
@@ -201,7 +225,8 @@ public class ExperienceResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(experience.getId())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].beginningDate").value(hasItem(DEFAULT_BEGINNING_DATE.toString())))
-            .andExpect(jsonPath("$.[*].endingDate").value(hasItem(DEFAULT_ENDING_DATE.toString())));
+            .andExpect(jsonPath("$.[*].endingDate").value(hasItem(DEFAULT_ENDING_DATE.toString())))
+            .andExpect(jsonPath("$.[*].type").value(hasItem(DEFAULT_TYPE.toString())));
     }
     
     @Test
@@ -216,7 +241,8 @@ public class ExperienceResourceIntTest {
             .andExpect(jsonPath("$.id").value(experience.getId()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.beginningDate").value(DEFAULT_BEGINNING_DATE.toString()))
-            .andExpect(jsonPath("$.endingDate").value(DEFAULT_ENDING_DATE.toString()));
+            .andExpect(jsonPath("$.endingDate").value(DEFAULT_ENDING_DATE.toString()))
+            .andExpect(jsonPath("$.type").value(DEFAULT_TYPE.toString()));
     }
 
     @Test
@@ -238,7 +264,8 @@ public class ExperienceResourceIntTest {
         updatedExperience
             .title(UPDATED_TITLE)
             .beginningDate(UPDATED_BEGINNING_DATE)
-            .endingDate(UPDATED_ENDING_DATE);
+            .endingDate(UPDATED_ENDING_DATE)
+            .type(UPDATED_TYPE);
         ExperienceDTO experienceDTO = experienceMapper.toDto(updatedExperience);
 
         restExperienceMockMvc.perform(put("/api/experiences")
@@ -253,6 +280,7 @@ public class ExperienceResourceIntTest {
         assertThat(testExperience.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testExperience.getBeginningDate()).isEqualTo(UPDATED_BEGINNING_DATE);
         assertThat(testExperience.getEndingDate()).isEqualTo(UPDATED_ENDING_DATE);
+        assertThat(testExperience.getType()).isEqualTo(UPDATED_TYPE);
     }
 
     @Test
