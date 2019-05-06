@@ -1,0 +1,14 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "ExperienceService",
+    "relationships": [],
+    "fields": [],
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "exp_user",
+    "databaseType": "mongodb",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "ExperienceService"
+}
