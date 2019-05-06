@@ -1,7 +1,35 @@
 {
     "fluentMethods": true,
     "clientRootFolder": "ExperienceService",
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "expUser",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "experience",
+            "otherEntityRelationshipNameUndefined": true
+        },
+        {
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "experience",
+            "otherEntityRelationshipNameUndefined": true
+        },
+        {
+            "relationshipName": "school",
+            "otherEntityName": "school",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "experience",
+            "otherEntityRelationshipNameUndefined": true
+        }
+    ],
     "fields": [
         {
             "fieldName": "title",

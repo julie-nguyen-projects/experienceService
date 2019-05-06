@@ -20,6 +20,16 @@ public class ExperienceDTO implements Serializable {
     private LocalDate endingDate;
 
 
+    private String userId;
+
+    private String companyId;
+
+    private String companyName;
+
+    private String schoolId;
+
+    private String schoolName;
+
     public String getId() {
         return id;
     }
@@ -52,6 +62,46 @@ public class ExperienceDTO implements Serializable {
         this.endingDate = endingDate;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String expUserId) {
+        this.userId = expUserId;
+    }
+
+    public String getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(String companyId) {
+        this.companyId = companyId;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(String schoolId) {
+        this.schoolId = schoolId;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -80,6 +130,11 @@ public class ExperienceDTO implements Serializable {
             ", title='" + getTitle() + "'" +
             ", beginningDate='" + getBeginningDate() + "'" +
             ", endingDate='" + getEndingDate() + "'" +
+            ", user=" + getUserId() +
+            ", company=" + getCompanyId() +
+            ", company='" + getCompanyName() + "'" +
+            ", school=" + getSchoolId() +
+            ", school='" + getSchoolName() + "'" +
             "}";
     }
 }

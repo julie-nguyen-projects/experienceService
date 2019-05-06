@@ -3,6 +3,7 @@ package com.epitech.pgt2019.web.rest;
 import com.epitech.pgt2019.ExperienceServiceApp;
 
 import com.epitech.pgt2019.domain.Experience;
+import com.epitech.pgt2019.domain.ExpUser;
 import com.epitech.pgt2019.repository.ExperienceRepository;
 import com.epitech.pgt2019.service.ExperienceService;
 import com.epitech.pgt2019.service.dto.ExperienceDTO;
@@ -100,6 +101,10 @@ public class ExperienceResourceIntTest {
             .title(DEFAULT_TITLE)
             .beginningDate(DEFAULT_BEGINNING_DATE)
             .endingDate(DEFAULT_ENDING_DATE);
+        // Add required entity
+        ExpUser expUser = ExpUserResourceIntTest.createEntity();
+        expUser.setId("fixed-id-for-tests");
+        experience.setUser(expUser);
         return experience;
     }
 

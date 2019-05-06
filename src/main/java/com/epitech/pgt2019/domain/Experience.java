@@ -1,6 +1,7 @@
 package com.epitech.pgt2019.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -32,6 +33,21 @@ public class Experience implements Serializable {
 
     @Field("ending_date")
     private LocalDate endingDate;
+
+    @DBRef
+    @Field("user")
+    @JsonIgnoreProperties("experiences")
+    private ExpUser user;
+
+    @DBRef
+    @Field("company")
+    @JsonIgnoreProperties("experiences")
+    private Company company;
+
+    @DBRef
+    @Field("school")
+    @JsonIgnoreProperties("experiences")
+    private School school;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -79,6 +95,45 @@ public class Experience implements Serializable {
 
     public void setEndingDate(LocalDate endingDate) {
         this.endingDate = endingDate;
+    }
+
+    public ExpUser getUser() {
+        return user;
+    }
+
+    public Experience user(ExpUser expUser) {
+        this.user = expUser;
+        return this;
+    }
+
+    public void setUser(ExpUser expUser) {
+        this.user = expUser;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public Experience company(Company company) {
+        this.company = company;
+        return this;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public Experience school(School school) {
+        this.school = school;
+        return this;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
