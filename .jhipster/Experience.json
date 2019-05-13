@@ -1,0 +1,69 @@
+{
+    "fluentMethods": true,
+    "clientRootFolder": "ExperienceService",
+    "relationships": [
+        {
+            "relationshipName": "user",
+            "otherEntityName": "expUser",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id",
+            "otherEntityRelationshipName": "experience",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "company",
+            "otherEntityName": "company",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "experience",
+            "otherEntityRelationshipNameUndefined": false
+        },
+        {
+            "relationshipName": "school",
+            "otherEntityName": "school",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "experience",
+            "otherEntityRelationshipNameUndefined": false
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "beginningDate",
+            "fieldType": "LocalDate",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "endingDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "Type",
+            "fieldValues": "JOB,FORMATION",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "dto": "mapstruct",
+    "searchEngine": false,
+    "service": "serviceClass",
+    "entityTableName": "experience",
+    "databaseType": "mongodb",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "ExperienceService"
+}
