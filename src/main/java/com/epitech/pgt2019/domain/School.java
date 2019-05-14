@@ -15,7 +15,7 @@ import java.util.Objects;
  * A School.
  */
 @Document(collection = "school")
-public class School implements Serializable {
+public class School extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
