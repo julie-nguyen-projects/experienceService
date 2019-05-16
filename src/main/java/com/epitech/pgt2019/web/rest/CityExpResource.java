@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -40,7 +41,7 @@ public class CityExpResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/city-exps")
-    public ResponseEntity<CityExpDTO> createCityExp(@RequestBody CityExpDTO cityExpDTO) throws URISyntaxException {
+    public ResponseEntity<CityExpDTO> createCityExp(@Valid @RequestBody CityExpDTO cityExpDTO) throws URISyntaxException {
         log.debug("REST request to save CityExp : {}", cityExpDTO);
         if (cityExpDTO.getId() != null) {
             throw new BadRequestAlertException("A new cityExp cannot already have an ID", ENTITY_NAME, "idexists");
@@ -61,7 +62,7 @@ public class CityExpResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/city-exps")
-    public ResponseEntity<CityExpDTO> updateCityExp(@RequestBody CityExpDTO cityExpDTO) throws URISyntaxException {
+    public ResponseEntity<CityExpDTO> updateCityExp(@Valid @RequestBody CityExpDTO cityExpDTO) throws URISyntaxException {
         log.debug("REST request to update CityExp : {}", cityExpDTO);
         if (cityExpDTO.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");

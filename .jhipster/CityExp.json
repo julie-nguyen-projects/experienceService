@@ -3,10 +3,15 @@
     "clientRootFolder": "ExperienceService",
     "relationships": [
         {
-            "relationshipName": "country",
-            "otherEntityName": "country",
+            "relationshipName": "countryExp",
+            "otherEntityName": "countryExp",
             "relationshipType": "many-to-one",
-            "otherEntityField": "name"
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "name",
+            "otherEntityRelationshipName": "cityExp",
+            "otherEntityRelationshipNameUndefined": false
         }
     ],
     "fields": [

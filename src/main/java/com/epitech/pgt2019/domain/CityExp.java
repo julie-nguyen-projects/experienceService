@@ -6,6 +6,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,9 +26,9 @@ public class CityExp implements Serializable {
     private String name;
 
     @DBRef
-    @Field("country")
+    @Field("countryExp")
     @JsonIgnoreProperties("cityExps")
-    private Country country;
+    private CountryExp countryExp;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -51,17 +52,17 @@ public class CityExp implements Serializable {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
+    public CountryExp getCountryExp() {
+        return countryExp;
     }
 
-    public CityExp country(Country country) {
-        this.country = country;
+    public CityExp countryExp(CountryExp countryExp) {
+        this.countryExp = countryExp;
         return this;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountryExp(CountryExp countryExp) {
+        this.countryExp = countryExp;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

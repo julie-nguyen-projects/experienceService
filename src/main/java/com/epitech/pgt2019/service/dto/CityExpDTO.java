@@ -1,4 +1,5 @@
 package com.epitech.pgt2019.service.dto;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -12,9 +13,9 @@ public class CityExpDTO implements Serializable {
     private String name;
 
 
-    private String countryId;
+    private String countryExpId;
 
-    private String countryName;
+    private String countryExpName;
 
     public String getId() {
         return id;
@@ -32,20 +33,20 @@ public class CityExpDTO implements Serializable {
         this.name = name;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getCountryExpId() {
+        return countryExpId;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
+    public void setCountryExpId(String countryExpId) {
+        this.countryExpId = countryExpId;
     }
 
-    public String getCountryName() {
-        return countryName;
+    public String getCountryExpName() {
+        return countryExpName;
     }
 
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
+    public void setCountryExpName(String countryExpName) {
+        this.countryExpName = countryExpName;
     }
 
     @Override
@@ -74,8 +75,8 @@ public class CityExpDTO implements Serializable {
         return "CityExpDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", country=" + getCountryId() +
-            ", country='" + getCountryName() + "'" +
+            ", countryExp=" + getCountryExpId() +
+            ", countryExp='" + getCountryExpName() + "'" +
             "}";
     }
 }

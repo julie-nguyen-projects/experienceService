@@ -3,6 +3,7 @@ package com.epitech.pgt2019.web.rest;
 import com.epitech.pgt2019.ExperienceServiceApp;
 
 import com.epitech.pgt2019.domain.CityExp;
+import com.epitech.pgt2019.domain.CountryExp;
 import com.epitech.pgt2019.repository.CityExpRepository;
 import com.epitech.pgt2019.service.CityExpService;
 import com.epitech.pgt2019.service.dto.CityExpDTO;
@@ -90,6 +91,10 @@ public class CityExpResourceIntTest {
     public static CityExp createEntity() {
         CityExp cityExp = new CityExp()
             .name(DEFAULT_NAME);
+        // Add required entity
+        CountryExp countryExp = CountryExpResourceIntTest.createEntity();
+        countryExp.setId("fixed-id-for-tests");
+        cityExp.setCountryExp(countryExp);
         return cityExp;
     }
 
