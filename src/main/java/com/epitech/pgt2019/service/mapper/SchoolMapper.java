@@ -8,14 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity School and its DTO SchoolDTO.
  */
-@Mapper(componentModel = "spring", uses = {CityMapper.class})
+@Mapper(componentModel = "spring", uses = {CityExpMapper.class})
 public interface SchoolMapper extends EntityMapper<SchoolDTO, School> {
 
-    @Mapping(source = "city.id", target = "cityId")
-    @Mapping(source = "city.name", target = "cityName")
+    @Mapping(source = "cityExp.id", target = "cityExpId")
+    @Mapping(source = "cityExp.name", target = "cityExpName")
     SchoolDTO toDto(School school);
 
-    @Mapping(source = "cityId", target = "city")
+    @Mapping(source = "cityExpId", target = "cityExp")
     School toEntity(SchoolDTO schoolDTO);
 
     default School fromId(String id) {
