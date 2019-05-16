@@ -1,20 +1,18 @@
 package com.epitech.pgt2019.service.dto;
+import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A DTO for the City entity.
+ * A DTO for the CountryExp entity.
  */
-public class CityDTO implements Serializable {
+public class CountryExpDTO implements Serializable {
 
     private String id;
 
+    
     private String name;
 
-
-    private String countryId;
-
-    private String countryName;
 
     public String getId() {
         return id;
@@ -32,22 +30,6 @@ public class CityDTO implements Serializable {
         this.name = name;
     }
 
-    public String getCountryId() {
-        return countryId;
-    }
-
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
-    }
-
-    public String getCountryName() {
-        return countryName;
-    }
-
-    public void setCountryName(String countryName) {
-        this.countryName = countryName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -57,11 +39,11 @@ public class CityDTO implements Serializable {
             return false;
         }
 
-        CityDTO cityDTO = (CityDTO) o;
-        if (cityDTO.getId() == null || getId() == null) {
+        CountryExpDTO countryExpDTO = (CountryExpDTO) o;
+        if (countryExpDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), cityDTO.getId());
+        return Objects.equals(getId(), countryExpDTO.getId());
     }
 
     @Override
@@ -71,11 +53,9 @@ public class CityDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CityDTO{" +
+        return "CountryExpDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", country=" + getCountryId() +
-            ", country='" + getCountryName() + "'" +
             "}";
     }
 }

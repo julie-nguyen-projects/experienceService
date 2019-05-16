@@ -6,15 +6,16 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
+import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A City.
+ * A CityExp.
  */
 @Document(collection = "city")
-public class City implements Serializable {
+public class CityExp implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -25,8 +26,9 @@ public class City implements Serializable {
     private String name;
 
     @DBRef
-    @Field("country")
-    private Country country;
+    @Field("countryExp")
+    @JsonIgnoreProperties("cityExps")
+    private CountryExp countryExp;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -41,7 +43,7 @@ public class City implements Serializable {
         return name;
     }
 
-    public City name(String name) {
+    public CityExp name(String name) {
         this.name = name;
         return this;
     }
@@ -50,17 +52,17 @@ public class City implements Serializable {
         this.name = name;
     }
 
-    public Country getCountry() {
-        return country;
+    public CountryExp getCountryExp() {
+        return countryExp;
     }
 
-    public City country(Country country) {
-        this.country = country;
+    public CityExp countryExp(CountryExp countryExp) {
+        this.countryExp = countryExp;
         return this;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountryExp(CountryExp countryExp) {
+        this.countryExp = countryExp;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -72,11 +74,11 @@ public class City implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        City city = (City) o;
-        if (city.getId() == null || getId() == null) {
+        CityExp cityExp = (CityExp) o;
+        if (cityExp.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), city.getId());
+        return Objects.equals(getId(), cityExp.getId());
     }
 
     @Override
@@ -86,7 +88,7 @@ public class City implements Serializable {
 
     @Override
     public String toString() {
-        return "City{" +
+        return "CityExp{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             "}";

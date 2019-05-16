@@ -14,9 +14,9 @@ public class CompanyDTO implements Serializable {
     private String name;
 
 
-    private String cityId;
+    private String cityExpId;
 
-    private String cityName;
+    private String cityExpName;
 
     public String getId() {
         return id;
@@ -34,20 +34,20 @@ public class CompanyDTO implements Serializable {
         this.name = name;
     }
 
-    public String getCityId() {
-        return cityId;
+    public String getCityExpId() {
+        return cityExpId;
     }
 
-    public void setCityId(String cityId) {
-        this.cityId = cityId;
+    public void setCityExpId(String cityExpId) {
+        this.cityExpId = cityExpId;
     }
 
-    public String getCityName() {
-        return cityName;
+    public String getCityExpName() {
+        return cityExpName;
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityExpName(String cityExpName) {
+        this.cityExpName = cityExpName;
     }
 
     @Override
@@ -76,8 +76,8 @@ public class CompanyDTO implements Serializable {
         return "CompanyDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", city=" + getCityId() +
-            ", city='" + getCityName() + "'" +
+            ", cityExp=" + getCityExpId() +
+            ", cityExp='" + getCityExpName() + "'" +
             "}";
     }
 }

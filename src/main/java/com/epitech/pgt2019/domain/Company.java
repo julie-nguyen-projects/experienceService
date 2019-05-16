@@ -27,8 +27,9 @@ public class Company extends AbstractAuditingEntity implements Serializable {
     private String name;
 
     @DBRef
-    @Field("city")
-    private City city;
+    @Field("cityExp")
+    @JsonIgnoreProperties("companies")
+    private CityExp cityExp;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -52,17 +53,17 @@ public class Company extends AbstractAuditingEntity implements Serializable {
         this.name = name;
     }
 
-    public City getCity() {
-        return city;
+    public CityExp getCityExp() {
+        return cityExp;
     }
 
-    public Company city(City city) {
-        this.city = city;
+    public Company cityExp(CityExp cityExp) {
+        this.cityExp = cityExp;
         return this;
     }
 
-    public void setCity(City city) {
-        this.city = city;
+    public void setCityExp(CityExp cityExp) {
+        this.cityExp = cityExp;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

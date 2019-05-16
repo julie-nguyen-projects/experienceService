@@ -11,10 +11,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Country.
+ * A CountryExp.
  */
 @Document(collection = "country")
-public class Country implements Serializable {
+public class CountryExp implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
@@ -38,7 +38,7 @@ public class Country implements Serializable {
         return name;
     }
 
-    public Country name(String name) {
+    public CountryExp name(String name) {
         this.name = name;
         return this;
     }
@@ -56,11 +56,11 @@ public class Country implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Country country = (Country) o;
-        if (country.getId() == null || getId() == null) {
+        CountryExp countryExp = (CountryExp) o;
+        if (countryExp.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), country.getId());
+        return Objects.equals(getId(), countryExp.getId());
     }
 
     @Override
@@ -70,7 +70,7 @@ public class Country implements Serializable {
 
     @Override
     public String toString() {
-        return "Country{" +
+        return "CountryExp{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             "}";

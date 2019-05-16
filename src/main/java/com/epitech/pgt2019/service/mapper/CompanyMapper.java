@@ -8,14 +8,14 @@ import org.mapstruct.*;
 /**
  * Mapper for the entity Company and its DTO CompanyDTO.
  */
-@Mapper(componentModel = "spring", uses = {CityMapper.class})
+@Mapper(componentModel = "spring", uses = {CityExpMapper.class})
 public interface CompanyMapper extends EntityMapper<CompanyDTO, Company> {
 
-    @Mapping(source = "city.id", target = "cityId")
-    @Mapping(source = "city.name", target = "cityName")
+    @Mapping(source = "cityExp.id", target = "cityExpId")
+    @Mapping(source = "cityExp.name", target = "cityExpName")
     CompanyDTO toDto(Company company);
 
-    @Mapping(source = "cityId", target = "city")
+    @Mapping(source = "cityExpId", target = "cityExp")
     Company toEntity(CompanyDTO companyDTO);
 
     default Company fromId(String id) {
