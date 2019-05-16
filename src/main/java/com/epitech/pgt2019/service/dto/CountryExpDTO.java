@@ -4,19 +4,15 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A DTO for the Company entity.
+ * A DTO for the CountryExp entity.
  */
-public class CompanyDTO implements Serializable {
+public class CountryExpDTO implements Serializable {
 
     private String id;
 
-    @NotNull
+    
     private String name;
 
-
-    private String cityExpId;
-
-    private String cityExpName;
 
     public String getId() {
         return id;
@@ -34,22 +30,6 @@ public class CompanyDTO implements Serializable {
         this.name = name;
     }
 
-    public String getCityExpId() {
-        return cityExpId;
-    }
-
-    public void setCityExpId(String cityExpId) {
-        this.cityExpId = cityExpId;
-    }
-
-    public String getCityExpName() {
-        return cityExpName;
-    }
-
-    public void setCityExpName(String cityExpName) {
-        this.cityExpName = cityExpName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -59,11 +39,11 @@ public class CompanyDTO implements Serializable {
             return false;
         }
 
-        CompanyDTO companyDTO = (CompanyDTO) o;
-        if (companyDTO.getId() == null || getId() == null) {
+        CountryExpDTO countryExpDTO = (CountryExpDTO) o;
+        if (countryExpDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), companyDTO.getId());
+        return Objects.equals(getId(), countryExpDTO.getId());
     }
 
     @Override
@@ -73,11 +53,9 @@ public class CompanyDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CompanyDTO{" +
+        return "CountryExpDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", cityExp=" + getCityExpId() +
-            ", cityExp='" + getCityExpName() + "'" +
             "}";
     }
 }

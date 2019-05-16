@@ -1,22 +1,20 @@
 package com.epitech.pgt2019.service.dto;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A DTO for the Company entity.
+ * A DTO for the CityExp entity.
  */
-public class CompanyDTO implements Serializable {
+public class CityExpDTO implements Serializable {
 
     private String id;
 
-    @NotNull
     private String name;
 
 
-    private String cityExpId;
+    private String countryId;
 
-    private String cityExpName;
+    private String countryName;
 
     public String getId() {
         return id;
@@ -34,20 +32,20 @@ public class CompanyDTO implements Serializable {
         this.name = name;
     }
 
-    public String getCityExpId() {
-        return cityExpId;
+    public String getCountryId() {
+        return countryId;
     }
 
-    public void setCityExpId(String cityExpId) {
-        this.cityExpId = cityExpId;
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
     }
 
-    public String getCityExpName() {
-        return cityExpName;
+    public String getCountryName() {
+        return countryName;
     }
 
-    public void setCityExpName(String cityExpName) {
-        this.cityExpName = cityExpName;
+    public void setCountryName(String countryName) {
+        this.countryName = countryName;
     }
 
     @Override
@@ -59,11 +57,11 @@ public class CompanyDTO implements Serializable {
             return false;
         }
 
-        CompanyDTO companyDTO = (CompanyDTO) o;
-        if (companyDTO.getId() == null || getId() == null) {
+        CityExpDTO cityExpDTO = (CityExpDTO) o;
+        if (cityExpDTO.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), companyDTO.getId());
+        return Objects.equals(getId(), cityExpDTO.getId());
     }
 
     @Override
@@ -73,11 +71,11 @@ public class CompanyDTO implements Serializable {
 
     @Override
     public String toString() {
-        return "CompanyDTO{" +
+        return "CityExpDTO{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
-            ", cityExp=" + getCityExpId() +
-            ", cityExp='" + getCityExpName() + "'" +
+            ", country=" + getCountryId() +
+            ", country='" + getCountryName() + "'" +
             "}";
     }
 }

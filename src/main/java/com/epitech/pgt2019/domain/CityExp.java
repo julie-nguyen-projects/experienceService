@@ -6,30 +6,28 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DBRef;
-import javax.validation.constraints.*;
 
 import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * A Company.
+ * A CityExp.
  */
-@Document(collection = "company")
-public class Company extends AbstractAuditingEntity implements Serializable {
+@Document(collection = "city")
+public class CityExp implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
     @Id
     private String id;
 
-    @NotNull
     @Field("name")
     private String name;
 
     @DBRef
-    @Field("cityExp")
-    @JsonIgnoreProperties("companies")
-    private CityExp cityExp;
+    @Field("country")
+    @JsonIgnoreProperties("cityExps")
+    private Country country;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public String getId() {
@@ -44,7 +42,7 @@ public class Company extends AbstractAuditingEntity implements Serializable {
         return name;
     }
 
-    public Company name(String name) {
+    public CityExp name(String name) {
         this.name = name;
         return this;
     }
@@ -53,17 +51,17 @@ public class Company extends AbstractAuditingEntity implements Serializable {
         this.name = name;
     }
 
-    public CityExp getCityExp() {
-        return cityExp;
+    public Country getCountry() {
+        return country;
     }
 
-    public Company cityExp(CityExp cityExp) {
-        this.cityExp = cityExp;
+    public CityExp country(Country country) {
+        this.country = country;
         return this;
     }
 
-    public void setCityExp(CityExp cityExp) {
-        this.cityExp = cityExp;
+    public void setCountry(Country country) {
+        this.country = country;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -75,11 +73,11 @@ public class Company extends AbstractAuditingEntity implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Company company = (Company) o;
-        if (company.getId() == null || getId() == null) {
+        CityExp cityExp = (CityExp) o;
+        if (cityExp.getId() == null || getId() == null) {
             return false;
         }
-        return Objects.equals(getId(), company.getId());
+        return Objects.equals(getId(), cityExp.getId());
     }
 
     @Override
@@ -89,7 +87,7 @@ public class Company extends AbstractAuditingEntity implements Serializable {
 
     @Override
     public String toString() {
-        return "Company{" +
+        return "CityExp{" +
             "id=" + getId() +
             ", name='" + getName() + "'" +
             "}";
