@@ -109,4 +109,15 @@ public class CompanyResource {
         companyService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
     }
+
+    /**
+     * Get companies which name contains research parameter
+     * @param name : text searched in name
+     * @return : the ResponseEntity with status 200 (OK) and found companies in the body
+     */
+    @GetMapping("/companies/nameContains/{name}")
+    public ResponseEntity<List<CompanyDTO>> getCompaniesWithNameContains(@PathVariable String name) {
+        log.debug("REST request to get Companies which name contains : {}", name);
+        return ResponseEntity.ok().body(companyService.findCompaniesNameContains(name));
+    }
 }
