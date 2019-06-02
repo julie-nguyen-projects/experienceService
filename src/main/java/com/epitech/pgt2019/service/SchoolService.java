@@ -78,4 +78,11 @@ public class SchoolService {
         log.debug("Request to delete School : {}", id);
         schoolRepository.deleteById(id);
     }
+
+    public List<SchoolDTO> findSchoolsNameContains(String name) {
+        return schoolRepository.findByNameContainsIgnoreCase(name)
+            .stream()
+            .map(schoolMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
 }

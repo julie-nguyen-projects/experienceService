@@ -109,4 +109,15 @@ public class SchoolResource {
         schoolService.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id)).build();
     }
+
+    /**
+     *  Get schools which name contains research parameter
+     *  @param name : text searched in name
+     *  @return : the ResponseEntity with status 200 (OK) and found schools in the body
+     */
+    @GetMapping("/schools/nameContains/{name}")
+    public ResponseEntity<List<SchoolDTO>> getSchoolsWithNameContains(@PathVariable String name) {
+        log.debug("REST request to get Schools which name contains : {}", name);
+        return ResponseEntity.ok().body(schoolService.findSchoolsNameContains(name));
+    }
 }
