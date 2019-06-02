@@ -78,4 +78,15 @@ public class CompanyService {
         log.debug("Request to delete Company : {}", id);
         companyRepository.deleteById(id);
     }
+
+    /**
+     Get companies which name contains research parameter
+     * @param name : text searched in name
+     * @return : found companies
+     */
+    public List<CompanyDTO> findCompaniesNameContains(String name) {
+        return companyRepository.findByNameContainsIgnoreCase(name).stream()
+            .map(companyMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
 }

@@ -5,6 +5,8 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data MongoDB repository for the Company entity.
@@ -13,4 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CompanyRepository extends MongoRepository<Company, String> {
 
+    List<Company> findByNameContainsIgnoreCase(String name);
 }
