@@ -94,6 +94,9 @@ public class SchoolService {
      * @return true if already exists, else false
      */
     public boolean doesSchoolAlreadyExists(SchoolDTO schoolDTO) {
-        return schoolRepository.findByNameIgnoreCaseAndCityExp(schoolDTO.getName(), schoolDTO.getCityExpId()).isPresent();
+        return schoolRepository.findByNameIgnoreCaseAndCityExp(
+            schoolDTO.getName(),
+            schoolDTO.getCityExpId()
+        ).isPresent();
     }
 }

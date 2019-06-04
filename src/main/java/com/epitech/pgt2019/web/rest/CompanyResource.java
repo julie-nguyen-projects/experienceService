@@ -46,6 +46,11 @@ public class CompanyResource {
         if (companyDTO.getId() != null) {
             throw new BadRequestAlertException("A new company cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        // Check if the company already exists (same name same city)
+        if (companyService.doesCompanyAlreadyExists(companyDTO)) {
+            throw new BadRequestAlertException("A company with the same name and with same location already exists",
+                ENTITY_NAME, "nameCityExist");
+        }
         CompanyDTO result = companyService.save(companyDTO);
         return ResponseEntity.created(new URI("/api/companies/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
