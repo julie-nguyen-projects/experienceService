@@ -6,7 +6,6 @@ import com.epitech.pgt2019.service.dto.SchoolDTO;
 import com.epitech.pgt2019.service.mapper.SchoolMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -26,9 +25,12 @@ public class SchoolService {
 
     private final SchoolMapper schoolMapper;
 
-    public SchoolService(SchoolRepository schoolRepository, SchoolMapper schoolMapper) {
+    private final CityExpService cityExpService;
+
+    public SchoolService(SchoolRepository schoolRepository, SchoolMapper schoolMapper, CityExpService cityExpService) {
         this.schoolRepository = schoolRepository;
         this.schoolMapper = schoolMapper;
+        this.cityExpService = cityExpService;
     }
 
     /**
@@ -84,5 +86,14 @@ public class SchoolService {
             .stream()
             .map(schoolMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
+    }
+
+    /**
+     * Check if a school with the same name and with same city already exists
+     * @param schoolDTO : school to verify
+     * @return true if already exists, else false
+     */
+    public boolean doesSchoolAlreadyExists(SchoolDTO schoolDTO) {
+        return schoolRepository.findByNameIgnoreCaseAndCityExp(schoolDTO.getName(), schoolDTO.getCityExpId()).isPresent();
     }
 }

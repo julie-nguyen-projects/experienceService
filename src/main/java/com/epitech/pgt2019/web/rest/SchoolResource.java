@@ -46,6 +46,11 @@ public class SchoolResource {
         if (schoolDTO.getId() != null) {
             throw new BadRequestAlertException("A new school cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        // Check if the school already exists (same name same city)
+        if (schoolService.doesSchoolAlreadyExists(schoolDTO)) {
+            throw new BadRequestAlertException("A school with the same name and with same location already exists",
+                ENTITY_NAME, "nameCityExist");
+        }
         SchoolDTO result = schoolService.save(schoolDTO);
         return ResponseEntity.created(new URI("/api/schools/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
