@@ -89,4 +89,16 @@ public class CompanyService {
             .map(companyMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
+
+    /**
+     * Check if a company with the same name and with same city already exists
+     * @param companyDTO : school to verify
+     * @return true if already exists, else false
+     */
+    public boolean doesCompanyAlreadyExists(CompanyDTO companyDTO) {
+        return companyRepository.findByNameIgnoreCaseAndCityExp(
+            companyDTO.getName(),
+            companyDTO.getCityExpId()
+        ).isPresent();
+    }
 }
