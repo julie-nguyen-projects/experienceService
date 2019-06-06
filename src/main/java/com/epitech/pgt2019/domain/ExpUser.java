@@ -16,8 +16,7 @@ import java.util.Objects;
 public class ExpUser implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @Id
+
     private String id;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
