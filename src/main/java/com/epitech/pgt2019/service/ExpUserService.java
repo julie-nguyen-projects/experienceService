@@ -34,12 +34,14 @@ public class ExpUserService {
     /**
      * Save a expUser.
      *
+     * @param newId the new id of the expUser
      * @param expUserDTO the entity to save
      * @return the persisted entity
      */
-    public ExpUserDTO save(ExpUserDTO expUserDTO) {
+    public ExpUserDTO save(String newId, ExpUserDTO expUserDTO) {
         log.debug("Request to save ExpUser : {}", expUserDTO);
         ExpUser expUser = expUserMapper.toEntity(expUserDTO);
+        expUser.setId(newId);
         expUser = expUserRepository.save(expUser);
         return expUserMapper.toDto(expUser);
     }
